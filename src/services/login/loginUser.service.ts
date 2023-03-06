@@ -15,12 +15,12 @@ const createLoginService = async (loginData: ILogin): Promise<string> => {
   });
 
   if (!user) {
-    throw new AppError("Wrong email or password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const passwrodMatch = await compare(loginData.password, user.password);
   if (!passwrodMatch) {
-    throw new AppError("Wrong email or password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
   const token:string  = jwt.sign(
     {

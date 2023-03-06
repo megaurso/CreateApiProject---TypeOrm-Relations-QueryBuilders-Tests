@@ -4,8 +4,7 @@ import {
   userSchemas,
   returnUserSchemaComplet,
   returnUserSchemaWithId,
-  returnArrayUsers,
-  userUpdateSchema,
+  returnArrayUsers
 } from "../schemas/user.schemas";
 
 type IUser = z.infer<typeof userSchemas>;

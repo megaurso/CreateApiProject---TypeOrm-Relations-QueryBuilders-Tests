@@ -27,14 +27,14 @@ class User {
   @Column({ length: 120 })
   password: string;
 
-  @CreateDateColumn()
-  createdAt: string;
+  @CreateDateColumn({type: "date"})
+  createdAt:  string | Date;
 
-  @UpdateDateColumn()
-  updatedAt: string;
+  @UpdateDateColumn({type: "date"})
+  updatedAt:  string | Date;
 
-  @DeleteDateColumn()
-  deletedAt: string;
+  @DeleteDateColumn({type: "date"})
+  deletedAt:  string | Date;
 
   @BeforeInsert()
   @BeforeUpdate()

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const userSchemas = z.object({
   name: z.string().min(2).max(45),
-  email: z.string(),
+  email: z.string().email(),
   password: z.string(),
   admin: z.boolean().nullish(),
 });
@@ -13,9 +13,9 @@ const returnUserSchemaWithId = userSchemas.extend({
 
 const returnUserSchemaComplet = returnUserSchemaWithId
   .extend({
-    createdAt: z.date(),
-    updatedAt: z.date(),
-    deletedAt: z.date().nullable(),
+    createdAt: z.date().or(z.string()),
+    updatedAt: z.date().or(z.string()),
+    deletedAt: z.date().or(z.string()).nullable(),
   })
   .omit({ password: true });
 

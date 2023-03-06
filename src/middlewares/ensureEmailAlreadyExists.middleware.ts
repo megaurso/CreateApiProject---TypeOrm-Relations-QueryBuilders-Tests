@@ -17,7 +17,7 @@ const ensureEmailAlreadyExist = async (
       },
     });
     if (findEmail) {
-      throw new AppError("Email already exists.", 409);
+      throw new AppError("Email already exists", 409);
     }
   }
 

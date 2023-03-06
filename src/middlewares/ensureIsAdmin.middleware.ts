@@ -9,7 +9,7 @@ const ensureIsAdmin = async (
   const authenticatedUser = req.user;
 
   if (authenticatedUser.admin === false) {
-    throw new AppError("Insufficient Permission", 403);
+    throw new AppError("Insufficient permission", 403);
   }
   return next();
 };
