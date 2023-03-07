@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import { ICategory, IReturnCategory } from "../interfaces/category.interfaces";
+import { IReturnCategory } from "../interfaces/category.interfaces";
 import { createCategory } from "../services/category/createCategory.service";
 import { listCategory } from "../services/category/listAllCategoy.service"
+import { listCategoryImoveis } from "../services/category/listImoveisCategory.service";
 
 const createCategoryController = async (req: Request, res: Response) => {
   const userData: IReturnCategory = req.body;
@@ -15,4 +16,12 @@ const listAllCategoryController = async (req: Request, res: Response) => {
   return res.json(categorys);
 };
 
-export { createCategoryController,listAllCategoryController };
+const listAllIMoveisCategoryController =async (req: Request, res: Response) => {
+  const userId = +req.params.id
+
+  const result = await listCategoryImoveis(userId)
+  
+  return res.json(result)
+}
+
+export { createCategoryController,listAllCategoryController,listAllIMoveisCategoryController };
