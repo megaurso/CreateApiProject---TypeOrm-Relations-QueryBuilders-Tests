@@ -13,11 +13,13 @@ const createSchedulesController = async (req: Request, res: Response) => {
   return res.status(201).json(newDate);
 };
 
+const listAllSchedulesController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const idUser: number = +req.params.id;
+  const newResult = await listAllSchedules(idUser);
+  return res.json(newResult);
+};
 
-const listAllSchedulesController =async (req: Request, res: Response):Promise<Response> => {
-  const id:number = +req.params.id
-  const newResult = await listAllSchedules(id)
-  return res.json(newResult)
-}
-
-export { createSchedulesController,listAllSchedulesController };
+export { createSchedulesController, listAllSchedulesController };

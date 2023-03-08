@@ -40,8 +40,8 @@ class RealEstate {
   @ManyToOne(() => Category, { nullable: true })
   category: Category;
 
-  @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
-  schedule: Schedule[];
+  @OneToMany(() => Schedule, (schedules) => schedules.realEstate)
+  schedules: Schedule[];
 }
 
 export { RealEstate };

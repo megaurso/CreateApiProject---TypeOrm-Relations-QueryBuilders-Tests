@@ -1,27 +1,28 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { RealEstate, User } from "../../entities";
+import { RealEstate } from "../../entities";
 import { AppError } from "../../errors";
 
-const listAllSchedules = async (userId: number) => {
-  const userRepo: Repository<RealEstate> =
-    AppDataSource.getRepository(RealEstate);
+const listAllSchedules = async (idUserEstate:number):Promise<RealEstate> => {
+  const userRepo: Repository<RealEstate> = AppDataSource.getRepository(RealEstate);
 
-  const userSchedules = userRepo
+    const userSchedules:RealEstate | null = await userRepo
     .createQueryBuilder("realEstate")
     .select([
       "realEstate",
-      "realEstateAddress",
-      "realEstateCategory",
-      "realEstateSchedule",
+      "address",
+      "category",
+      "schedules",
       "user",
     ])
-    .innerJoin("realEstate.address", "realEstateAddress")
-    .innerJoin("realEstate.category", "realEstateCategory")
-    .innerJoin("realEstate.schedule", "realEstateSchedule")
-    .innerJoin("realEstateSchedule.user", "user")
-    .where("realEstate.id = :id", { id: userId })
-    .getMany();
+    .innerJoin("realEstate.address", "address")
+    .innerJoin("realEstate.category", "category")
+    .innerJoin("realEstate.schedules", "schedules")
+    .innerJoin("schedules.user", "user")
+    .where("realEstate.id = :id", { id: idUserEstate})
+    .getOne();
+
+  console.log(userSchedules,"osiafnhsdoi")
 
   if (!userSchedules) {
     throw new AppError("RealEstate not found", 404);

@@ -13,7 +13,7 @@ class Schedule {
   @Column({ type: "time" })
   hour: Date;
 
-  @ManyToOne(() => RealEstate, (realEstate) => realEstate.schedule)
+  @ManyToOne(() => RealEstate, (realEstate) => realEstate.schedules)
   realEstate: RealEstate;
 
   @ManyToOne(() => User)
