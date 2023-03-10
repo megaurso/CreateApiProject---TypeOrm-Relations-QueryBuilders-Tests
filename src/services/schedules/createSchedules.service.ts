@@ -70,7 +70,14 @@ const createSchedules = async (
     throw new AppError("User schedule to this real estate at this date and time already exists", 409);
   }
 
-  const createSchedule = visitRepo.create(userData);
+  const newSchedule = {
+    date,
+    hour,
+    realEstate,
+    user:findUser
+  }
+
+  const createSchedule = visitRepo.create(newSchedule);
 
   await visitRepo.save(createSchedule);
 
