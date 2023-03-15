@@ -120,8 +120,3 @@ yarn test <subpasta>/<arquivo>
 
 **Caso você queira verificar todas as opções de execução de testes, visite a [Documentação oficial do Jest](https://jestjs.io/docs/cli)**
 
-Após rodar um dos comandos aparecerá um log no seu terminal, contendo as informações da execução do teste.
-
-**Observação:** O teste pode demorar alguns segundos para ser finalizado. Quanto maior for o teste, mais tempo será consumido para a execução.
-
-### Agora que já sabe como iniciar o seu projeto e rodar os testes, é hora de colocar a mão no código
